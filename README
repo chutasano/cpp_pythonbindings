@@ -1,3 +1,5 @@
 ##Python Binding Tests
 
 Using Boost.python
+
+see catkin_tools for catkin tools implementation

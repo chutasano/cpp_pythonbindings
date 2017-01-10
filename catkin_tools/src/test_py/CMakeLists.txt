@@ -8,7 +8,6 @@ find_package(catkin REQUIRED COMPONENTS
 #  test_cpp
 )
 
-catkin_package()
+catkin_python_setup()
 
-catkin_install_python(PROGRAMS test_py.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+catkin_package()
