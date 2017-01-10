@@ -14,7 +14,7 @@ find_package(PythonLibs REQUIRED)
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-# catkin_python_setup()
+ catkin_python_setup()
 
 ###################################
 ## catkin specific configuration ##
@@ -27,7 +27,7 @@ find_package(PythonLibs REQUIRED)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES ${PROJECT_NAME}
+  LIBRARIES ${PROJECT_NAME}
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
@@ -40,7 +40,8 @@ catkin_package(
 ## Your package locations should be listed before other locations
 #QQ
 include_directories(
-/usr/include
+include
+${catkin_INCLUDE_DIRS}
 ${Boost_INCLUDE_DIRS}
 ${PYTHON_INCLUDE_DIRS}
 )
@@ -61,16 +62,16 @@ ${PYTHON_INCLUDE_DIRS}
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(test_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-set_target_properties(${PROJECT_NAME} PROPERTIES
-  PREFIX ""
-#  LIBRARY_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
-)
 ## Specify libraries to link a library or executable target against
  target_link_libraries(${PROJECT_NAME}
    ${catkin_LIBRARIES}
    ${Boost_LIBRARIES}
  )
 
+set_target_properties(${PROJECT_NAME} PROPERTIES
+  PREFIX ""
+  LIBRARY_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}
+)
 
 
 #############
